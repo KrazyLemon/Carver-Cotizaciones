@@ -30,5 +30,15 @@ public class UsuarioController {
     public void deleteUsuario(@PathVariable("userId") int usuarioId){
         usuarioService.deleteUsuario(usuarioId);
     }
-
+    //Actualiza un usuario por id por medio de la url localhost:8080/api/v1/usuarios/{id}
+    @PutMapping(path = "{userId}")
+    public void updateUsuario(
+            @PathVariable("userId") int usuarioId,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String lastName,
+            @RequestParam(required = false) String secondLastName,
+            @RequestParam(required = false) String email,
+            @RequestParam(required = false) String password){
+        usuarioService.updateUsuario(usuarioId, name, lastName, secondLastName, email, password);
+    }
 }
